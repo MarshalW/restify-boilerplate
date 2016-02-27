@@ -1,0 +1,23 @@
+{
+  "name": "restify-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start":"node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarshalW/restify-boilerplate.git"
+  },
+  "author": "marshal.wu@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarshalW/restify-boilerplate/issues"
+  },
+  "homepage": "https://github.com/MarshalW/restify-boilerplate#readme",
+  "dependencies": {
+    "restify": "^4.0.4"
+  }
+}
