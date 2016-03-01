@@ -1,6 +1,8 @@
 "use strict";
 
 import restify from 'restify';
+
+import * as routes from './routes';
 import util from './core/util';
 
 class Server {
@@ -16,11 +18,7 @@ class Server {
                 console.log('App is ready at : ' + port);
         });
 
-        this.server.get('/echo/:name', (req, res, next)=> {
-            console.log('echo~');
-            res.send(req.params);
-            return next();
-        });
+        this.server.get('/echo/:name', routes.echos.get.echo);
     }
 }
 new Server();
