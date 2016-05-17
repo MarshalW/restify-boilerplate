@@ -4,6 +4,17 @@ restify的样板项目。
 
 ## 安装和运行
 
+安装所需库：
+
+```
+npm install -dd
+```
+
+运行：
+
+```
+npm start
+```
 
 ## ES6旧版本
 
