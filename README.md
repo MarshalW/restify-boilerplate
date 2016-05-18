@@ -16,6 +16,12 @@ npm install -dd
 npm start
 ```
 
+测试：
+
+```
+npm test
+```
+
 ## ES6旧版本
 
 以前的版本，见[dev_es6分支](https://github.com/MarshalW/restify-boilerplate/tree/dev_es6)。

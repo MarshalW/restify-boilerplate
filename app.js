@@ -32,7 +32,7 @@ server.use(plugins);
  * CORS
  */
 
-var corsOptions = {
+const corsOptions = {
   origins: nconf.get('CORS:Origins'),
   credentials: nconf.get('CORS:Credentials'),
   headers: nconf.get('CORS:Headers')
@@ -67,7 +67,7 @@ const registerRoute = function(route) {
 };
 
 const setupRoute = function(routeName) {
-  var routes = require(path.join(__dirname, 'routes', routeName));
+  const routes = require(path.join(__dirname, 'routes', routeName));
   routes.forEach(registerRoute);
 };
 
@@ -78,6 +78,26 @@ const setupRoute = function(routeName) {
 .forEach(setupRoute);
 
 
-server.listen(nconf.get('Server:Port'), function() {
-  console.log('%s listening at %s', server.name, server.url);
-});
+/**
+ * Listen
+ */
+
+const listen=function(done){
+	server.listen(nconf.get('Server:Port'), function() {
+		if (done) {
+	      return done();
+	    }
+		console.log('%s listening at %s', server.name, server.url);
+	});
+}
+
+if (!module.parent) {
+  listen();
+}
+
+/**
+ * Export
+ */
+
+module.exports.listen = listen;
+

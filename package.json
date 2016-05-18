@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/mocha --reporter spec",
     "start": "node app.js"
   },
   "repository": {
@@ -21,5 +21,8 @@
     "nconf": "^0.8.4",
     "restify": "^4.0.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "supertest": "^1.2.0"
+  }
 }
