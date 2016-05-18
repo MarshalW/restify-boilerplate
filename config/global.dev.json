@@ -9,6 +9,5 @@
 	    "Headers": []
 	},
 	"Logging":{
-		"Dir":"./logs"
 	}
 }

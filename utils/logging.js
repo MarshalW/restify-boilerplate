@@ -12,7 +12,7 @@ const dateFormat=function() {
 	return moment().format('YYYY-MM-DD HH:mm:ss:SSS');
 };
 
-const LOGGER_FILE_MAX_SIZE=1024*1024*10;
+const LOGGER_FILE_MAX_SIZE=1024*1024*20;
 
 const consoleLoggerTransport=new winston.transports.Console({
 	timestamp:dateFormat,
