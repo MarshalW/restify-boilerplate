@@ -1,0 +1,14 @@
+{
+	"Server":{
+		"Name":"my-server-api",
+		"Port":3000
+	},
+	"CORS": {
+	    "Credentials": false,
+	    "Origins": [],
+	    "Headers": []
+	},
+	"Logging":{
+		"Dir":"./logs"
+	}
+}

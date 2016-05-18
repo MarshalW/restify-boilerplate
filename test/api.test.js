@@ -8,7 +8,7 @@ const path = require('path');
 const util = require('util');
 
 global.nconf = require('nconf').file({
-  file: path.join(__dirname, '..', 'config', 'global.json')
+  file: path.join(__dirname, '..', 'config', 'global.dev.json')
 });
 
 const pkg = require(path.join(__dirname, '..', 'package.json'));

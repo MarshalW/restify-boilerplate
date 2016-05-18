@@ -1,6 +1,8 @@
 
 'use strict';
 
+const logger=require('../../utils/logging');
+
 /**
  * Routes
  */

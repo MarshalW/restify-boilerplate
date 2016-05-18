@@ -32,7 +32,8 @@ describe(testName, function() {
   			if(err) throw err;
   			assert.equal(res.body.name, global.nconf.get('Server:Name'));
   			done();
-  		});
+  	});
+    // done();
   });
 
 });

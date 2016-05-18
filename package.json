@@ -18,8 +18,13 @@
   },
   "homepage": "https://github.com/MarshalW/restify-boilerplate#readme",
   "dependencies": {
+    "moment": "^2.13.0",
     "nconf": "^0.8.4",
-    "restify": "^4.0.4"
+    "restify": "^4.0.4",
+    "stack-trace": "0.0.9",
+    "underscore": "^1.8.3",
+    "winston": "^2.2.0",
+    "winston-daily-rotate-file": "^1.0.1"
   },
   "devDependencies": {
     "mocha": "^2.4.5",

@@ -1,5 +1,7 @@
 'use strict';
 
+const logger=require('../../utils/logging');
+
 /**
  * Routes
  */
@@ -21,6 +23,7 @@ routes.push({
     version: '1.0.0'
   },
   action: function(req, res, next) {
+    logger.info('access /');
     res.send({
       name: global.nconf.get('Server:Name')
     });

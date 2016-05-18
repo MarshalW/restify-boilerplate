@@ -5,21 +5,21 @@
  * Module dependencies.
  */
 
-var restify = require('restify');
+const restify = require('restify');
 
 /**
  * CORS helper
  */
 
-var CORSHelper = function(options) {
+const CORSHelper = function(options) {
 
-  var allowedOrigins = options.origins || [];
-  var allowedHeaders = restify.CORS.ALLOW_HEADERS.concat(options.headers || []);
+  const allowedOrigins = options.origins || [];
+  const allowedHeaders = restify.CORS.ALLOW_HEADERS.concat(options.headers || []);
 
-  var unknownMethodHandler = function(req, res) {
+  const unknownMethodHandler = function(req, res) {
 
-    var origin = req.headers.origin;
-    var originAllowed = false;
+    const origin = req.headers.origin;
+    const originAllowed = false;
 
     // Skip if it's not a preflight request
     if (req.method.toLowerCase() !== 'options') {

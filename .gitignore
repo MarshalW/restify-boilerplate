@@ -34,3 +34,4 @@ node_modules
 
 # 自定义
 dist
+global.product.json

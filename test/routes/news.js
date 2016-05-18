@@ -5,7 +5,6 @@
  * Moduel dependencies
  */
 
-const path = require('path');
 const util = require('util');
 const assert = require('assert');
 const request = require('../utils/client');

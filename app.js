@@ -4,14 +4,44 @@
 const restify = require('restify');
 const path = require('path');
 
-global.nconf = require('nconf').file({
-  file: path.join(__dirname, 'config', 'global.json')
+let configFileName=process.env.NODE_ENV==='production'?'global.product.json':'global.dev.json';
+
+global.nconf = require('nconf')
+	.argv()
+   	.env()
+	.file({file: path.join(__dirname, 'config', configFileName)
 });
 
-function respond(req, res, next) {
-  res.send('hello ' + req.params.name);
-  next();
-}
+
+/**
+ * Logging
+ */
+const logger=require('./utils/logging');
+// 设置自定义的logger
+logger.setCustomLoggers([
+	{
+		name:'dbLogger',
+		loggerOptions:{
+			type:'file',
+			fileName:'db',
+			level:'info',
+			json:false
+		}
+	},
+	{
+		name:'redisLogger',
+		loggerOptions:{
+			type:'file',
+			fileName:'redis',
+			level:'debug',
+			json:false
+		}
+	}
+]);
+// 设置后这样使用：
+logger.dbLogger.info('db logger===>test!!');
+
+
 
 const server = restify.createServer({
 	name:nconf.get('Server:name')
@@ -23,7 +53,8 @@ const plugins = [
   restify.queryParser(),
   restify.fullResponse(),
   restify.bodyParser(),
-  restify.gzipResponse()
+  restify.gzipResponse(),
+  restify.requestLogger()
 ];
 
 server.use(plugins);
@@ -87,7 +118,8 @@ const listen=function(done){
 		if (done) {
 	      return done();
 	    }
-		console.log('%s listening at %s', server.name, server.url);
+		logger.info('%s listening at %s', server.name, server.url);
+		// console.log('%s listening at %s', server.name, server.url);
 	});
 }
 

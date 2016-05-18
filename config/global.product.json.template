@@ -7,5 +7,8 @@
 	    "Credentials": false,
 	    "Origins": [],
 	    "Headers": []
+	},
+	"Logging":{
+		"Dir":"/logs"
 	}
 }
