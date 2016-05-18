@@ -8,14 +8,10 @@ const path = require('path');
 const util = require('util');
 
 global.nconf = require('nconf').file({
-  file: path.join(__dirname, 'config', 'global.json')
+  file: path.join(__dirname, '..', 'config', 'global.json')
 });
 
 const pkg = require(path.join(__dirname, '..', 'package.json'));
-
-const nconf = require('nconf').file({
-  file: path.join(__dirname, '..', 'config', 'global.json')
-});
 
 /**
  * Tests
@@ -23,7 +19,7 @@ const nconf = require('nconf').file({
 
 const testName = util.format(
   '%s v%s',
-  nconf.get('Server:Name'),
+  global.nconf.get('Server:Name'),
   pkg.version
 );
 
