@@ -8,5 +8,8 @@
         "Origins": [],
         "Headers": []
     },
-    "Logging": {}
+    "Logging": {},
+    "Auth": {
+       "SecretSigningKey": "are you ok?"
+   }
 }

@@ -4,12 +4,13 @@
 const restify = require('restify');
 const path = require('path');
 
-const nconf=require('./config');
+const nconf = require('./config');
+const logger = require('./utils/logging');
+const jwtPlugin=require('./plugins/jwtPlugin');
 
 /**
  * Logging
  */
-const logger = require('./utils/logging');
 // 设置自定义的logger
 logger.setCustomLoggers([{
     name: 'dbLogger',
@@ -31,8 +32,6 @@ logger.setCustomLoggers([{
 // 设置后这样使用：
 // logger.dbLogger.info('db logger===>test!!');
 
-
-
 const server = restify.createServer({
     name: nconf.get('Server:name')
 });
@@ -44,7 +43,8 @@ const plugins = [
     restify.fullResponse(),
     restify.bodyParser(),
     restify.gzipResponse(),
-    restify.requestLogger()
+    restify.requestLogger(),
+    jwtPlugin()
 ];
 
 server.use(plugins);
@@ -98,7 +98,9 @@ const setupRoute = function(routeName) {
 
 [
     'root',
-    'news'
+    'news',
+    'auth',
+    'user'
 ]
 .forEach(setupRoute);
 

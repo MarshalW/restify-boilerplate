@@ -6,7 +6,7 @@ const logger = require('../../utils/logging');
  * Routes
  */
 
-var routes = [];
+const routes = [];
 
 /**
  * GET /news
@@ -23,8 +23,10 @@ routes.push({
         version: '1.0.0'
     },
     action: function(req, res, next) {
+        const userName=req.user!=null?req.user.userName:null;
         res.send({
             results: {
+                userName,
                 newsItems: [{
                     id: 100,
                     title: '研究称全球联网将使世界经济获益6.7万亿美元'

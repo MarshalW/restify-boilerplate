@@ -31,5 +31,7 @@ describe(testName, function() {
 
     require(path.join(__dirname, 'routes', 'root'));
     require(path.join(__dirname, 'routes', 'news'));
+    require(path.join(__dirname, 'routes', 'auth'));
+    require(path.join(__dirname, 'routes', 'user'));
 
 });

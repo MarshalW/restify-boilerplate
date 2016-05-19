@@ -1,13 +1,12 @@
 'use strict';
 
 const logger = require('../../utils/logging');
-const nconf=require('../../config');
 
 /**
  * Routes
  */
 
-const routes = [];
+var routes = [];
 
 /**
  * GET /
@@ -16,17 +15,20 @@ const routes = [];
 
 routes.push({
     meta: {
-        name: 'getRoot',
+        name: 'getUser',
         method: 'GET',
         paths: [
-            '/'
+            '/user/:id'
         ],
         version: '1.0.0'
     },
     action: function(req, res, next) {
-        // logger.info('access /');
+        let userName = req.user != null ? req.user.userName : '--';
+
         res.send({
-            name: nconf.get('Server:Name')
+            results: {
+                userName
+            }
         });
         return next();
     }
