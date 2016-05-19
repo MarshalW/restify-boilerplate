@@ -48,7 +48,7 @@ npm test
 
 `/config/global.product.json`在`.gitignre`中，因此不会被提交到git repository。
 
-### winston日志
+### Winston日志
 
 使用`npm start`运行的时候，将默认使用`Console`日志。即所有的日志都会打印到终端标准输出上。
 
