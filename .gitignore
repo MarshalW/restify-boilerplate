@@ -35,3 +35,6 @@ node_modules
 # 自定义
 dist
 global.product.json
+
+# OS X System File
+.DS_Store
