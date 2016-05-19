@@ -106,7 +106,8 @@ const setupRoute = function(routeName) {
 
 [
     'root',
-    'news'
+    'news',
+    'story'
 ]
 .forEach(setupRoute);
 
