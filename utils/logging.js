@@ -8,6 +8,8 @@ const _ = require('underscore');
 const DailyRotateFile = require('winston-daily-rotate-file');
 const path = require('path');
 
+const nconf=require('../config');
+
 const dateFormat = function() {
     return moment().format('YYYY-MM-DD HH:mm:ss:SSS');
 };
@@ -23,10 +25,10 @@ let defaultLoggerTransport, errorTransport;
 
 const transports = [];
 
-if (global.nconf.get('NODE_ENV') === 'production') {
+if (nconf.get('NODE_ENV') === 'production') {
     defaultLoggerTransport = new DailyRotateFile({
         name: 'defaultLog',
-        filename: path.join(global.nconf.get('Logging:Dir'), 'app.log'),
+        filename: path.join(nconf.get('Logging:Dir'), 'app.log'),
         timestamp: dateFormat,
         level: 'info',
         colorize: true,
@@ -36,7 +38,7 @@ if (global.nconf.get('NODE_ENV') === 'production') {
 
     errorTransport = new(winston.transports.File)({
         name: 'error',
-        filename: path.join(global.nconf.get('Logging:Dir'), 'error.log'),
+        filename: path.join(nconf.get('Logging:Dir'), 'error.log'),
         timestamp: dateFormat,
         level: 'error',
         humanReadableUnhandledException: true,
@@ -52,7 +54,7 @@ if (global.nconf.get('NODE_ENV') === 'production') {
         transports: [
             new(winston.transports.File)({
                 name: 'error',
-                filename: path.join(global.nconf.get('Logging:Dir'), 'crash.log'),
+                filename: path.join(nconf.get('Logging:Dir'), 'crash.log'),
                 level: 'error',
                 handleExceptions: true,
                 timestamp: dateFormat,
@@ -93,13 +95,13 @@ logger.error = function() {
 // 设置自定义的logger
 logger.setCustomLoggers = function(loggers) {
     loggers.forEach((log) => {
-        if (global.nconf.get('NODE_ENV') === 'production') {
+        if (nconf.get('NODE_ENV') === 'production') {
             let transport;
             switch (log.loggerOptions.type) {
                 case 'file':
                     transport = new DailyRotateFile({
                         name: log.name,
-                        filename: path.join(global.nconf.get('Logging:Dir'), `${log.loggerOptions.fileName}.log`),
+                        filename: path.join(nconf.get('Logging:Dir'), `${log.loggerOptions.fileName}.log`),
                         timestamp: dateFormat,
                         level: log.loggerOptions.level,
                         maxsize: LOGGER_FILE_MAX_SIZE,

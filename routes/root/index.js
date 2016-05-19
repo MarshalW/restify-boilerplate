@@ -1,6 +1,7 @@
 'use strict';
 
 const logger = require('../../utils/logging');
+const nconf=require('../../config');
 
 /**
  * Routes
@@ -25,7 +26,7 @@ routes.push({
     action: function(req, res, next) {
         logger.info('access /');
         res.send({
-            name: global.nconf.get('Server:Name')
+            name: nconf.get('Server:Name')
         });
         return next();
     }

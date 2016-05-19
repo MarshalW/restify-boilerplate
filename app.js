@@ -4,15 +4,7 @@
 const restify = require('restify');
 const path = require('path');
 
-let configFileName = process.env.NODE_ENV === 'production' ? 'global.product.json' : 'global.dev.json';
-
-global.nconf = require('nconf')
-    .argv()
-    .env()
-    .file({
-        file: path.join(__dirname, 'config', configFileName)
-    });
-
+const nconf=require('./config');
 
 /**
  * Logging
@@ -37,7 +29,7 @@ logger.setCustomLoggers([{
     }
 }]);
 // 设置后这样使用：
-logger.dbLogger.info('db logger===>test!!');
+// logger.dbLogger.info('db logger===>test!!');
 
 
 
