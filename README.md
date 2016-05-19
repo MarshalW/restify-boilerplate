@@ -40,6 +40,14 @@ npm test
 
 ### 配置文件
 
+使用全局配置文件对象：
+
+```
+const nconf=require('./config');
+```
+
+具体用法，见[nconf](https://github.com/indexzero/nconf)。
+
 使用`npm start`运行的时候，使用`/config/global.dev.json`配置文件。
 
 使用`NODE_ENV=production npm start`运行时，会使用`/config/global.product.json`配置文件。
@@ -49,6 +57,14 @@ npm test
 `/config/global.product.json`在`.gitignre`中，因此不会被提交到git repository。
 
 ### Winston日志
+
+使用默认日志的方式：
+
+```
+const logger = require('./utils/logging');
+..
+logger.info('balabala');
+```
 
 使用`npm start`运行的时候，将默认使用`Console`日志。即所有的日志都会打印到终端标准输出上。
 
@@ -71,5 +87,3 @@ npm test
 以前的版本，见[dev_es6分支](https://github.com/MarshalW/restify-boilerplate/tree/dev_es6)。
 
 放弃这个版本分支的做法，主要是不想编译支持ES6，这样增加项目的复杂度。
-
-
