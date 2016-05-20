@@ -4,6 +4,8 @@ restify的样板项目。
 
 ## 安装和运行
 
+需要的`Node.js`版本: v6.2.0
+
 安装所需库：
 
 ```
@@ -43,7 +45,7 @@ npm test
 
 使用全局配置文件对象：
 
-```
+```javascript
 const nconf=require('./config');
 ```
 
@@ -61,7 +63,7 @@ const nconf=require('./config');
 
 使用默认日志的方式：
 
-```
+```javascript
 const logger = require('./utils/logging');
 ..
 logger.info('balabala');
@@ -87,7 +89,7 @@ logger.info('balabala');
 
 当通过`/auth/signIn`登录时，需要POST传入`userName`和`password`两个参数。比对`password`成功后，会返回类似这样:
 
-```
+```javascript
 {
   "results": {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDciLCJ1c2VyTmFtZSI6InpoYW5nc2FuIiwiaWF0IjoxNDYzNjUzMDM2fQ.3BPAitFhEG4NzEuf62Af8mmy2f83VrhlmELvuxiBN70"
@@ -102,7 +104,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDciL
 ```
 服务器端的中间件/插件，`/plugins/jwtPlugin.js`将对token的签名做校验，对校验出错的情况返回类似这样：
 
-```
+```javascript
 {
   "code": "InvalidCredentials",
   "message": ""
