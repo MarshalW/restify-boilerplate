@@ -2,7 +2,7 @@
 
 const jwt = require('jsonwebtoken');
 const logger = require('../../utils/logging');
-const nconf=require('../../config');
+const nconf = require('../../config');
 
 /**
  * Routes
@@ -25,15 +25,24 @@ routes.push({
         version: '1.0.0'
     },
     action: function(req, res, next) {
-        const {userName,password}=req.params;
+        const {
+            userName,
+            password
+        } = req.params;
         logger.debug(`userName: ${userName}, password: ${password}`);
+
         //TODO 查询是否一致，并获取用户ID
-        const userId='007';
-        const authInfo={userId,userName};
-        const token = jwt.sign(authInfo, nconf.get('Auth:SecretSigningKey'));
+        
+        const userId = userName == 'zhangsan' ? "007" : "123";
+
+        const authInfo = {
+            userId,
+            userName
+        };
+        const token = jwt.sign(authInfo, nconf.get('Security:SecretSigningKey'));
         res.send({
             results: {
-              token
+                token
             }
         });
         return next();

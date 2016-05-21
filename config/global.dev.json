@@ -9,7 +9,65 @@
         "Headers": []
     },
     "Logging": {},
-    "Auth": {
-       "SecretSigningKey": "are you ok?"
-   }
+    "Security": {
+        "SecretSigningKey": "are you ok?",
+        "Users": [{
+            "userId": "100",
+            "role": "guest"
+        }, {
+            "userId": "123",
+            "role": "customer"
+        }, {
+            "userId": "007",
+            "role": "admin"
+        }],
+        "ACL": {
+            "Rules": [{
+                "roles": ["admin"],
+                "allows": [{
+                    "resources": [
+                        "/#1.0.0",
+                        "/auth/signIn#1.0.0",
+                        "/news#1.0.0",
+                        "/user/:id#1.0.0"
+                    ],
+                    "permissions": "*"
+                }]
+            }, {
+                "roles": ["customer"],
+                "allows": [{
+                    "resources": [
+                        "/#1.0.0",
+                        "/news#1.0.0",
+                        "/user/:id#1.0.0"
+                    ],
+                    "permissions": "get"
+                }]
+            }, {
+                "roles": ["customer"],
+                "allows": [{
+                    "resources": [
+                        "/auth/signIn#1.0.0"
+                    ],
+                    "permissions": "post"
+                }]
+            }, {
+                "roles": ["customer"],
+                "allows": [{
+                    "resources": [
+                        "/user/:id#1.0.0"
+                    ],
+                    "permissions": "put"
+                }]
+            }, {
+                "roles": ["guest"],
+                "allows": [{
+                    "resources": [
+                        "/#1.0.0"
+                    ],
+                    "permissions": "get"
+                }]
+            }]
+        }
+    }
 }

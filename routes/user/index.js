@@ -24,7 +24,7 @@ routes.push({
     },
     action: function(req, res, next) {
         let userName = req.user != null ? req.user.userName : '--';
-
+        logger.info(req.path());
         res.send({
             results: {
                 userName

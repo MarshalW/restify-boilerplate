@@ -24,11 +24,15 @@ module.exports = function() {
 
             token = credentials;
             try {
-                const dtoken = jwt.verify(token, nconf.get('Auth:SecretSigningKey'));
+                const dtoken = jwt.verify(token, nconf.get('Security:SecretSigningKey'));
                 req.user = dtoken;
             } catch (err) {
                 return next(new restify.InvalidCredentialsError(err));
             }
+        }else{
+          req.user={
+            userId:'100'
+          };
         }
         return next();
     }

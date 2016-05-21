@@ -7,6 +7,7 @@ const path = require('path');
 const nconf = require('./config');
 const logger = require('./utils/logging');
 const jwtPlugin=require('./plugins/jwtPlugin');
+const aclPlugin=require('./plugins/aclPlugin');
 
 /**
  * Logging
@@ -44,7 +45,8 @@ const plugins = [
     restify.bodyParser(),
     restify.gzipResponse(),
     restify.requestLogger(),
-    jwtPlugin()
+    jwtPlugin(),
+    aclPlugin()
 ];
 
 server.use(plugins);

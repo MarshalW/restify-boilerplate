@@ -11,7 +11,7 @@
     "Logging": {
         "Dir": "/logs"
     },
-    "Auth": {
+    "Security": {
         "SecretSigningKey": "are you ok?"
     }
 }
