@@ -1,6 +1,8 @@
 "use strict";
 
+const restify = require('restify');
 const jwt = require('jsonwebtoken');
+
 const logger = require('../../utils/logging');
 const nconf = require('../../config');
 
@@ -29,11 +31,16 @@ routes.push({
             userName,
             password
         } = req.params;
+
+        if (userName == null || password == null) {
+            return next(new restify.InvalidArgumentError("Sign in params error."));
+        }
+
         logger.debug(`userName: ${userName}, password: ${password}`);
 
         //TODO 查询是否一致，并获取用户ID
-        
-        const userId = userName == 'zhangsan' ? "007" : "123";
+
+        const userId = userName == 'zhangsan' ? "123" : "007";
 
         const authInfo = {
             userId,

@@ -31,7 +31,6 @@ const getACLInstance = function(aclBackend) {
     const rules = nconf.get('Security:ACL:Rules');
     const users = nconf.get('Security:Users');
 
-    console.dir(rules);
     acl.allow(rules);
 
     users.forEach(function(user) {

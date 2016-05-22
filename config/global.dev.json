@@ -27,8 +27,8 @@
                 "allows": [{
                     "resources": [
                         "/#1.0.0",
-                        "/auth/signIn#1.0.0",
                         "/news#1.0.0",
+                        "/news/:id#1.0.0",
                         "/user/:id#1.0.0"
                     ],
                     "permissions": "*"
@@ -42,30 +42,25 @@
                         "/user/:id#1.0.0"
                     ],
                     "permissions": "get"
-                }]
-            }, {
-                "roles": ["customer"],
-                "allows": [{
-                    "resources": [
-                        "/auth/signIn#1.0.0"
-                    ],
-                    "permissions": "post"
-                }]
-            }, {
-                "roles": ["customer"],
-                "allows": [{
+                }, {
                     "resources": [
                         "/user/:id#1.0.0"
                     ],
-                    "permissions": "put"
+                    "permissions": "post"
                 }]
             }, {
                 "roles": ["guest"],
                 "allows": [{
                     "resources": [
-                        "/#1.0.0"
+                        "/#1.0.0",
+                        "/news#1.0.0"
                     ],
                     "permissions": "get"
+                }, {
+                    "resources": [
+                        "/auth/signIn#1.0.0"
+                    ],
+                    "permissions": "post"
                 }]
             }]
         }

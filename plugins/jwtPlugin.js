@@ -31,7 +31,8 @@ module.exports = function() {
             }
         }else{
           req.user={
-            userId:'100'
+            userId:'100',
+            userName:'guest'
           };
         }
         return next();

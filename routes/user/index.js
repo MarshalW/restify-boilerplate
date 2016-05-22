@@ -1,5 +1,7 @@
 'use strict';
 
+const restify = require('restify');
+
 const logger = require('../../utils/logging');
 
 /**
@@ -23,14 +25,22 @@ routes.push({
         version: '1.0.0'
     },
     action: function(req, res, next) {
-        let userName = req.user != null ? req.user.userName : '--';
-        logger.info(req.path());
-        res.send({
-            results: {
-                userName
+        const userId = req.params.id;
+
+        req.acl.hasRole(req.user.userId, "admin", (err, hasRole) => {
+            if (err) throw err;
+            if (!hasRole && userId != req.user.userId) {
+                return next(new restify.errors.ForbiddenError('can not get other user info.'));
             }
+
+            const userName = userId == '123' ? "zhangsan" : "tom";
+            res.send({
+                results: {
+                    userName
+                }
+            });
+            return next();
         });
-        return next();
     }
 });
 
