@@ -116,7 +116,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDciL
 
 ### ACL
 
-ACL的配置在`/config/global.*.json`中。
+ACL的配置在`/config/global.*.json`中。目前仅支持配置文件ACL，以后可能加入在数据库实现的支持。
 
 实现代码在`/plugins/aclPlugin.js`。
 
