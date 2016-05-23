@@ -38,6 +38,7 @@ npm test
 * 基于`Mocha`的自动测试，可在`/test/routes/`下加入自己route的测试代码
 * 集成`Winston`日志
 * 基于JWT的认证
+* 基于[NODE ACL](https://github.com/OptimalBits/node_acl)的ACL
 
 ## 功能实用说明
 
@@ -112,6 +113,12 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDciL
 ```
 
 上述方法既适用于Web前端，也适用于iOS/Android。
+
+### ACL
+
+ACL的配置在`/config/global.*.json`中。
+
+实现代码在`/plugins/aclPlugin.js`。
 
 ## ES6旧版本
 
