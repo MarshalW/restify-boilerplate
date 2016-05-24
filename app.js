@@ -44,7 +44,7 @@ const plugins = [
     restify.fullResponse(),
     restify.bodyParser(),
     restify.gzipResponse(),
-    restify.requestLogger(),
+    // restify.requestLogger(),
     jwtPlugin(),
     aclPlugin()
 ];

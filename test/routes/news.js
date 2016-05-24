@@ -36,6 +36,20 @@ describe(testName, function() {
                 });
         });
 
+        it('游客可以访问新闻正文', function(done) {
+            const newsId='123';
+            request.get(`${route}/${newsId}`)
+                .set('Accept', 'application/json')
+                .expect('Content-Type', /json/)
+                .expect(200)
+                .end((err, res) => {
+                    if (err) throw err;
+                    assert.ok(res.body.results);
+                    done();
+                });
+        });
+
+
         it('游客不能创建新闻', function(done) {
             request.post(route)
                 .field('title', 'news title')

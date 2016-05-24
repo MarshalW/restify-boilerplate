@@ -23,7 +23,7 @@ routes.push({
         version: '1.0.0'
     },
     action: function(req, res, next) {
-        const userName=req.user!=null?req.user.userName:null;
+        const userName = req.user != null ? req.user.userName : null;
         res.send({
             results: {
                 userName,
@@ -54,7 +54,10 @@ routes.push({
         ],
         version: '1.0.0'
     },
-    action: function(req, res, next) {
+    action: [(req, res, next) => {
+        logger.info('读取新闻====>>>');
+        next();
+    }, function(req, res, next) {
         const newsId = req.params.id;
         // /news/124?flag=true
         // console.log(req.params.flag);
@@ -65,7 +68,7 @@ routes.push({
             }
         });
         return next();
-    }
+    }]
 });
 
 /**

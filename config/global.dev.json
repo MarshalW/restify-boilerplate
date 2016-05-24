@@ -39,6 +39,7 @@
                     "resources": [
                         "/#1.0.0",
                         "/news#1.0.0",
+                        "/news/:id#1.0.0",
                         "/user/:id#1.0.0"
                     ],
                     "permissions": "get"
@@ -53,7 +54,8 @@
                 "allows": [{
                     "resources": [
                         "/#1.0.0",
-                        "/news#1.0.0"
+                        "/news#1.0.0",
+                        "/news/:id#1.0.0"
                     ],
                     "permissions": "get"
                 }, {
