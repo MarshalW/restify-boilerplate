@@ -61,6 +61,7 @@ const corsOptions = {
     headers: nconf.get('CORS:Headers')
 };
 
+restify.CORS.ALLOW_HEADERS.push('authorization');
 server.pre(restify.CORS(corsOptions));
 
 if (corsOptions.headers.length) {
