@@ -26,7 +26,7 @@ let defaultLoggerTransport, errorTransport;
 const transports = [];
 
 if (nconf.get('NODE_ENV') === 'production') {
-    defaultLoggerTransport = new DailyRotateFile({
+      defaultLoggerTransport = new DailyRotateFile({
         name: 'defaultLog',
         filename: path.join(nconf.get('Logging:Dir'), 'app.log'),
         timestamp: dateFormat,

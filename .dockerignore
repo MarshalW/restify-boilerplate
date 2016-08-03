@@ -1,0 +1,8 @@
+logs
+.git
+node_modules
+test
+.DS_Store
+.gitignore
+Dockerfile
+docker-compose.yml

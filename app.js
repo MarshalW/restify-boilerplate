@@ -9,6 +9,9 @@ const logger = require('./utils/logging');
 const jwtPlugin=require('./plugins/jwtPlugin');
 const aclPlugin=require('./plugins/aclPlugin');
 
+require('./lib/redis');
+require('./lib/mongo');
+
 /**
  * Logging
  */

@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Marshal Wu",
+    "userName": "marshal",
+    "password":"$2a$10$3W2ZzpMsJvO/QgErB3fO9OL8JaNhZtnAKi9jA7iRI4jXaGpKOyPEq",
+    "email": "marshal.wu@gmail.com",
+    "age": 22,
+    "admin": true
+  },
+  {
+    "name": "Feng Zhiru",
+    "email": "feng.zhiru@gmail.com",
+    "password":"54321",
+    "age": 18,
+    "admin": false
+  }
+]

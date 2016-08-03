@@ -1,0 +1,15 @@
+version: '2'
+services:
+    web:
+            build: .
+            ports:
+                    - "3000:3000"
+            links:
+                    - redis
+            external_links:
+                    - db:mongo
+            volumes:
+                    - ./logs:/logs
+
+    redis:
+            image: redis

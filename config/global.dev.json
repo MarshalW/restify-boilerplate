@@ -3,6 +3,9 @@
         "Name": "my-server-api",
         "Port": 3000
     },
+    "Database":{
+      "Name":"dev"
+    },
     "CORS": {
         "Credentials": false,
         "Origins": [],

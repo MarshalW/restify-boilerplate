@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Marshal Wu",
+    "email": "marshal.wu@gmail.com",
+    "userName": "marshal",
+    "password":"12345",
+    "admin": true
+  },
+  {
+    "name": "Feng Zhiru",
+    "email": "feng.zhiru@gmail.com",
+    "userName": "feng",
+    "password":"54321",
+    "admin": false
+  }
+]

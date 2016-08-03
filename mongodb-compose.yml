@@ -1,0 +1,11 @@
+version: '2'
+services:
+    db:
+            image: mongo:latest
+            command: "--smallfiles --logpath=/dev/null"
+            ports:
+                 - "27017:27017"
+            volumes:
+                - ./db:/data/db
+            mem_limit: 256M
+            restart: always

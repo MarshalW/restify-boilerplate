@@ -2,43 +2,51 @@
 
 restify的样板项目。
 
+dockerize分支是做docker环境的样板项目。
+
 ## 安装和运行
 
-需要的Node.js版本`v6.2.0`
+### 需要安装的软件
 
-安装所需库：
+- Node.js版本`v6.3.0`
+- docker, 1.12及以上版本
 
-```
-npm install -dd
-```
+  - 服务器端，linux，需要安装`docker-engine`和`docker-compose`
+  - Mac开发端，需要安装docker for Mac，包含了所需的工具集合
+  - Windows开发端，需要安装docker for Windows，包含了所需的工具集合
 
-开发环境下运行：
+### 开发和调试
 
-```
-npm start
-```
+使用`nodemon`执行程序
 
-生产环境下运行：
+如需redis，可通过`docker-compose`启动／关闭
 
-```
-NODE_ENV=production npm start
-```
+如需mongodb，可通过`docker-compose`启动／关闭
 
-测试：
+无需设置配置文件，在dev模式下使用本地端口
 
-```
-npm test
-```
+初始化数据，执行`npm run import`
+
+### 部署和运行
+
+clone项目
+
+在项目目录下，执行：`docker-compose up`，将自动构建项目并启动相关容器。
+
+如需使用mongodb：
+
+- 需要额外的docker启动，本项目作为`external_links`使用
+- 或者使用项目自带的`mongodb-compose.yml`
 
 ## 实现的功能
 
-* 针对路由的支持：见`routes`下的示例
-* 对跨域访问（CORS）的支持: 见`/app.js`和`/utils/corsHelper.js`
-* 对全局配置的支持：配置文件在`/config/global.{dev|product}.json`，设置为`global.config`，方便其他文件引用
-* 基于`Mocha`的自动测试，可在`/test/routes/`下加入自己route的测试代码
-* 集成`Winston`日志
-* 基于JWT的认证
-* 基于[NODE ACL](https://github.com/OptimalBits/node_acl)的ACL
+- 针对路由的支持：见`routes`下的示例
+- 对跨域访问（CORS）的支持: 见`/app.js`和`/utils/corsHelper.js`
+- 对全局配置的支持：配置文件在`/config/global.{dev|product}.json`，设置为`global.config`，方便其他文件引用
+- 基于`Mocha`的自动测试，可在`/test/routes/`下加入自己route的测试代码
+- 集成`Winston`日志
+- 基于JWT的认证
+- 基于[NODE ACL](https://github.com/OptimalBits/node_acl)的ACL
 
 ## 功能实用说明
 
@@ -74,9 +82,9 @@ logger.info('balabala');
 
 使用`NODE_ENV=production npm start`运行时，日志都记录在日志文件中，在终端标准输出不打印。默认的日志文件如下：
 
- * app.log.YYYY-MM-DD：所有日志都记录到该文件中，json格式。每天1个文件，文件名类似这样：`app.log.2016-05-18`，如果文件超过20MB，会自动再创建新的文件
- * error.log: 记录所有logger.error()的日志，不使用json格式
- * crash.log: 崩溃日志，在服务器系统非正常退出的时候，记录报错相关信息，不使用json格式
+- app.log.YYYY-MM-DD：所有日志都记录到该文件中，json格式。每天1个文件，文件名类似这样：`app.log.2016-05-18`，如果文件超过20MB，会自动再创建新的文件
+- error.log: 记录所有logger.error()的日志，不使用json格式
+- crash.log: 崩溃日志，在服务器系统非正常退出的时候，记录报错相关信息，不使用json格式
 
 自定义日志，在`/app.js`中，可创建自定义日志。在`production`运行环境下记录在文件中，其他情况下使用默认的`Console`日志。
 
@@ -103,6 +111,7 @@ logger.info('balabala');
 ```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIwMDciLCJ1c2VyTmFtZSI6InpoYW5nc2FuIiwiaWF0IjoxNDYzNjUzMDM2fQ.3BPAitFhEG4NzEuf62Af8mmy2f83VrhlmELvuxiBN70
 ```
+
 服务器端的中间件/插件，`/plugins/jwtPlugin.js`将对token的签名做校验，对校验出错的情况返回类似这样：
 
 ```javascript

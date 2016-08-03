@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec",
-    "start": "node app.js"
+    "start": "node app.js",
+    "import": "node config/import.js"
   },
   "repository": {
     "type": "git",
@@ -21,12 +22,14 @@
     "acl": "^0.4.9",
     "jsonwebtoken": "^7.0.0",
     "moment": "^2.13.0",
+    "mongoose": "^4.5.7",
     "nconf": "^0.8.4",
-    "restify": "^4.0.4",
+    "restify": "^4.1.1",
     "stack-trace": "0.0.9",
     "underscore": "^1.8.3",
     "winston": "^2.2.0",
-    "winston-daily-rotate-file": "^1.0.1"
+    "winston-daily-rotate-file": "^1.0.1",
+    "bcrypt": "^0.8.7"
   },
   "devDependencies": {
     "mocha": "^2.4.5",
